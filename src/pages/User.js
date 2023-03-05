@@ -261,7 +261,7 @@ function User() {
                                     DAO
                                     <Spacer/>
                                     <SizeBox w={10}/>
-                                    Total Icome
+                                    Total Income
                                     <Spacer/>
                                     Working Period
                                     <SizeBox w={80}/>
