@@ -1,38 +1,100 @@
+html {
+    background-color: #FCFBF5;
+}
+
 .App {
-  text-align: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: calc(1660px * 0.65);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.f-height {
+    height: 100vmax;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.row { /* 꽉 차지않는 row */
+    width: max-content;
+    height: max-content;
+    display: flex;
+    flex-direction: row;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.f-row { /* 부모에 꽉 차는 row */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
-.App-link {
-  color: #61dafb;
+.all-f-row {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.column { /* 꽉 차지않는 column */
+    width: max-content;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.f-column { /* 부모에 꽉 차는 column */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.all-f-column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.j-center {
+    justify-content: center;
+}
+
+.j-start {
+    justify-content: start;
+}
+
+.j-end {
+    justify-content: end;
+}
+
+.j-space {
+    justify-content: space-between;
+}
+
+.a-center {
+    align-items: center;
+}
+
+.a-start {
+    align-items: start;
+}
+
+.a-end {
+    align-items: end;
+}
+
+.h3 {
+    color: #2F2F36;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+}
+
+.h4 {
+    color: #1E1E1E;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
 }
