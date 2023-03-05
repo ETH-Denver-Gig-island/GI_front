@@ -37,25 +37,18 @@ const BackBoard = styled.div`
 
 const XBtn = styled(ImageLoader)`
     cursor: pointer;
-`;
-
-const NFTBtn = styled(CityNFT)`
-    cursor: pointer;
-
-    width: calc(302px * 0.65);
-    height: calc(420px * 0.65);
-    border: none;
-
-    transition: all 0.2s ease-in-out;
-
-    ${p => p.selected ? `border: 5px solid ${COLORS.black};` : null}
-    &:hover {
-        border: 5px solid ${COLORS.black};
-    }
+    
+    padding: 10px;
 `;
 
 const ClaimBtn = styled(Claim)`
     cursor: pointer;
+
+    transition: all 0.2s ease-in-out;
+    
+    &:hover {
+        transform: translateY(-5px);
+    }
 `;
 
 function ClaimModal({setClaim, setModal, ...props}) {

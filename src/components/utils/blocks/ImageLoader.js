@@ -1,7 +1,9 @@
-function ImageLoader({w, h, src, round, ...props}) {
+function ImageLoader({w, h, src, round = 0, ...props}) {
     return (
-        <img style={{width: w, height: h, borderRadius: round}} src={src}>
-        </img>
+        <div {...props}>
+            <img style={{width: w, height: h, borderRadius: round}} src={src}>
+            </img>
+        </div>
     );
 }
 

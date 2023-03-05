@@ -22,6 +22,7 @@ import App from "../App";
 import CircleLoading from "../components/global/CircleLoading";
 import ImageLoader from "../components/utils/blocks/ImageLoader";
 import ClaimModal from "../components/global/modal/ClaimModal";
+import LoanModal from "../components/global/modal/LoanModal";
 
 const Container = styled.div`
     display: flex;
@@ -144,10 +145,16 @@ const ApplyBtn = styled(Apply)`
 
 const ClaimBtn = styled(Claim)`
     cursor: pointer;
+
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
 `;
 
 const ImageBtn = styled(ImageLoader)`
-    
+
 `;
 
 const list = ['Goerli', 'Aurora-test', 'Filecoin-Hyp']
@@ -168,6 +175,7 @@ function User() {
     const [selectClaim, setSelectClaim] = useState(false);
 
     const [claimModal, setClaimModal] = useState(false);
+    const [loanModal, setLoanModal] = useState(false);
 
     useEffect(() => {
         async function load() {
@@ -182,6 +190,7 @@ function User() {
     return (
         <>
             {claimModal && <ClaimModal setClaim={setIsClaim} setModal={setClaimModal}/>}
+            {loanModal && <LoanModal setClaim={setIsLoan} setModal={setLoanModal}/>}
             <Container>
                 <SizeBox h={57 * 0.65}/>
                 <div className={'f-row a-center'}>
@@ -240,7 +249,8 @@ function User() {
                         <div className={'f-row'}>
                             <SearchBtn width={490 * 0.65} height={65 * 0.65}/>
                             <Spacer/>
-                            {tabIndex === 1 && <ApplyBtn width={226 * 0.65} height={65 * 0.65}/>}
+                            {tabIndex === 1 && <ApplyBtn width={226 * 0.65} height={65 * 0.65}
+                            onClick={() => setLoanModal(true)}/>}
                         </div>
 
                         {tabIndex === 0 ? <>
@@ -283,12 +293,17 @@ function User() {
                             </>}
 
                             <SizeBox h={60}/>
-                            <ClaimBtn width={226 * 0.65} height={65 * 0.65} onClick={() => setClaimModal(true)}/>
+                            <ClaimBtn width={226 * 0.65} height={65 * 0.65} onClick={() => {
+                                if(!selectClaim) {
+                                    return;
+                                }
+                                setClaimModal(true);
+                            }}/>
                         </> : <>
                             {isLoan && <>
                                 <SizeBox h={42 * 0.65}/>
                                 <ListItemContainer>
-                                    CityDAO<Spacer/>2,000<Spacer/>2023.12.01<Spacer/>150%<Spacer/>
+                                    CityDAO<Spacer/>2,000<Spacer/>2023.12.01<Spacer/>15%<Spacer/>
                                 </ListItemContainer>
                             </>}
                         </>}
