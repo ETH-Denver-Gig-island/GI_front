@@ -17,14 +17,14 @@ html {
     height: 100vmax;
 }
 
-.row { /* 꽉 차지않는 row */
+.row {
     width: max-content;
     height: max-content;
     display: flex;
     flex-direction: row;
 }
 
-.f-row { /* 부모에 꽉 차는 row */
+.f-row {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -37,14 +37,14 @@ html {
     flex-direction: row;
 }
 
-.column { /* 꽉 차지않는 column */
+.column {
     width: max-content;
     height: max-content;
     display: flex;
     flex-direction: column;
 }
 
-.f-column { /* 부모에 꽉 차는 column */
+.f-column {
     width: 100%;
     display: flex;
     flex-direction: column;

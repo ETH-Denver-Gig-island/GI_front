@@ -25,8 +25,8 @@ function App() {
     const [web3, setWeb3] = useState();
 
     useEffect(() => {
-        // 검사
         setLoading(true);
+        // Token Verify
         setIsLogged(true);
         setLoading(false);
     }, []);
@@ -39,6 +39,9 @@ function App() {
 
     return (
         <div className={'App'}>
+            Currently, this is demo mode. <br/>
+            Within a week, we plan to connect and make it available for testing on<br/>
+            the Goerli testnet and other various layers.
             <ScrollToTop/>
             <GlobalStyle/>
             {/*<Header/>*/}

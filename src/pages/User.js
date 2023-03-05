@@ -5,7 +5,7 @@ import SizeBox from "../components/utils/blocks/SizeBox";
 import Spacer from "../components/utils/blocks/Spacer";
 import Selector from "../components/global/Selector";
 import {useEffect, useState} from "react";
-import {ContentLoaded} from "../components/utils/actions/Animations";
+import {ContentLoaded, GradientAni} from "../components/utils/actions/Animations";
 import {useNavigate} from "react-router-dom";
 import {ReactComponent as Collection} from "../assets/image/img_text-nft.svg";
 import {COLORS} from "../styles/colors";
@@ -23,6 +23,7 @@ import CircleLoading from "../components/global/CircleLoading";
 import ImageLoader from "../components/utils/blocks/ImageLoader";
 import ClaimModal from "../components/global/modal/ClaimModal";
 import LoanModal from "../components/global/modal/LoanModal";
+import LoanStatus from "../components/global/LoanStatus";
 
 const Container = styled.div`
     display: flex;
@@ -110,6 +111,8 @@ const ListIteOption = styled.div`
 const ListItemContainer = styled.div`
     cursor: pointer;
 
+    position: relative;
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -117,22 +120,48 @@ const ListItemContainer = styled.div`
 
     width: 100%;
     height: 60px;
-    background: ${p => p.selected ?
-            'linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), linear-gradient(269.51deg, #3D97D8 0.43%, #61E2B4 55.69%, #9FEB3F 84.09%, #FFDE60 99.58%)'
-            : `${COLORS.white}`};
-
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 17px;
+    padding: 0px 20px;
+    background-color: ${COLORS.white};
 
     font-style: normal;
     font-weight: 800;
     font-size: 18px;
     line-height: 30px;
 
-    box-sizing: border-box;
-    padding: 0px 37px 0px 23px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
 
-    transition: all 1s;
+    &:before {
+        content: "";
+        position: absolute;
+        z-index: 1;
+
+        top: 0;
+        left: 0;
+
+        width: ${p => p.selected ? '100%' : '0%'};
+        height: 100%;
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.7)),
+        linear-gradient(269.51deg,
+        #3D97D8 0.43%, #61E2B4 55.69%,
+        #9FEB3F 84.09%, #FFDE60 99.58%);
+
+        border-radius: 17px;
+        transition: width 0.5s ease-in-out;
+    }
+`;
+
+const ListItemWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+    width: 100%;
+    height: 100%;
+    
+    z-index: 2;
 `;
 
 const SearchBtn = styled(Search)`
@@ -273,28 +302,30 @@ function User() {
                                 <SizeBox h={20 * 0.65}/>
                                 <ListItemContainer selected={selectClaim}
                                                    onClick={() => setSelectClaim(v => !v)}>
-                                    {selectClaim ?
-                                        <Check width={42 * 0.65} height={42 * 0.65}>
-                                        </Check> :
-                                        <Blank width={42 * 0.65} height={42 * 0.65}>
-                                        </Blank>}<SizeBox w={78 * 0.65}/>
-                                    <ImageLoader src={CityIcon} w={24 * 0.65} h={24 * 0.65}/>
-                                    <SizeBox w={6}/>
-                                    CityDAO
-                                    <Spacer/>
-                                    <ImageLoader src={Token} w={22 * 0.65} h={22 * 0.65}/>
-                                    <SizeBox w={6}/>
-                                    2,000
-                                    <Spacer/>
-                                    2022.02.03 - 2022.06.04
-                                    <Spacer/>
-                                    Contract Developer
+                                    <ListItemWrapper>
+                                        {selectClaim ?
+                                            <Check width={42 * 0.65} height={42 * 0.65}>
+                                            </Check> :
+                                            <Blank width={42 * 0.65} height={42 * 0.65}>
+                                            </Blank>}<SizeBox w={78 * 0.65}/>
+                                        <ImageLoader src={CityIcon} w={24 * 0.65} h={24 * 0.65}/>
+                                        <SizeBox w={6}/>
+                                        CityDAO
+                                        <Spacer/>
+                                        <ImageLoader src={Token} w={22 * 0.65} h={22 * 0.65}/>
+                                        <SizeBox w={6}/>
+                                        2,000
+                                        <Spacer/>
+                                        2022.02.03 - 2022.06.04
+                                        <Spacer/>
+                                        Contract Developer
+                                    </ListItemWrapper>
                                 </ListItemContainer>
                             </>}
 
                             <SizeBox h={60}/>
                             <ClaimBtn width={226 * 0.65} height={65 * 0.65} onClick={() => {
-                                if(!selectClaim) {
+                                if (!selectClaim) {
                                     return;
                                 }
                                 setClaimModal(true);
@@ -303,20 +334,38 @@ function User() {
                             {isLoan && <>
                                 <SizeBox h={42 * 0.65}/>
                                 <ListIteOption>
+                                    <SizeBox w={20 * 0.65}/>
                                     DAO
                                     <Spacer/>
-                                    <SizeBox w={10}/>
+                                    <SizeBox w={95}/>
                                     Loan Amount
-                                    <Spacer/>
+                                    <SizeBox w={150}/>
                                     Payday
-                                    <SizeBox w={80}/>
                                     <Spacer/>
                                     Interest Rate(Monthly)
-                                    <SizeBox w={100}/>
+                                    <SizeBox w={32}/>
+                                    <Spacer/>
                                     Status
+                                    <SizeBox w={50}/>
                                 </ListIteOption>
+
+                                <SizeBox h={20 * 0.65}/>
                                 <ListItemContainer>
-                                    CityDAO<Spacer/>2,000<Spacer/>2023.12.01<Spacer/>15%<Spacer/>
+                                    <ImageLoader src={CityIcon} w={24 * 0.65} h={24 * 0.65}/>
+                                    <SizeBox w={6}/>
+                                    CityDAO
+                                    <Spacer/>
+                                    <ImageLoader src={Token} w={22 * 0.65} h={22 * 0.65}/>
+                                    <SizeBox w={6}/>
+                                    2,000
+                                    <Spacer/>
+                                    2023.12.01
+                                    <Spacer/>
+                                    15%
+                                    <Spacer/>
+                                    <SizeBox w={144 * 0.65} h={42 * 0.65}>
+                                        <LoanStatus mode={0}/>
+                                    </SizeBox>
                                 </ListItemContainer>
                             </>}
                         </>}
