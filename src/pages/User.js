@@ -190,7 +190,7 @@ function User() {
     return (
         <>
             {claimModal && <ClaimModal setClaim={setIsClaim} setModal={setClaimModal}/>}
-            {loanModal && <LoanModal setClaim={setIsLoan} setModal={setLoanModal}/>}
+            {loanModal && <LoanModal setLoan={setIsLoan} setModal={setLoanModal}/>}
             <Container>
                 <SizeBox h={57 * 0.65}/>
                 <div className={'f-row a-center'}>

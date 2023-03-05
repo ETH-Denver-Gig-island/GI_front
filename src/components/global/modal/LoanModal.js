@@ -113,7 +113,7 @@ function LoanModal({setLoan, setModal, ...props}) {
 
     const signClick = async () => {
         setLoading(true);
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 4000));
         setLoan(true);
 
         setLoading(false);
