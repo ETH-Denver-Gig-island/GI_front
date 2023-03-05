@@ -249,8 +249,8 @@ function User() {
                         <div className={'f-row'}>
                             <SearchBtn width={490 * 0.65} height={65 * 0.65}/>
                             <Spacer/>
-                            {tabIndex === 1 && <ApplyBtn width={226 * 0.65} height={65 * 0.65}
-                            onClick={() => setLoanModal(true)}/>}
+                            {tabIndex === 1 &&
+                                <ApplyBtn width={226 * 0.65} height={65 * 0.65} onClick={() => setLoanModal(true)}/>}
                         </div>
 
                         {tabIndex === 0 ? <>
@@ -302,6 +302,18 @@ function User() {
                         </> : <>
                             {isLoan && <>
                                 <SizeBox h={42 * 0.65}/>
+                                <ListIteOption>
+                                    DAO
+                                    <Spacer/>
+                                    <SizeBox w={10}/>
+                                    Loan Amount
+                                    <Spacer/>
+                                    Payday
+                                    <SizeBox w={80}/>
+                                    <Spacer/>
+                                    Inter
+                                    <SizeBox w={100}/>
+                                </ListIteOption>
                                 <ListItemContainer>
                                     CityDAO<Spacer/>2,000<Spacer/>2023.12.01<Spacer/>15%<Spacer/>
                                 </ListItemContainer>
