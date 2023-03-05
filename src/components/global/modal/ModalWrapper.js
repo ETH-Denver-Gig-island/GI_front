@@ -17,7 +17,7 @@ const Container = styled.div`
   
   left: 0;
   top: 0;
-  background-color: ${COLORS.light_black};
+  background-color: ${COLORS.trans_black};
   
   z-index: 1300;
   overflow: hidden;

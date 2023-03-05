@@ -311,8 +311,9 @@ function User() {
                                     Payday
                                     <SizeBox w={80}/>
                                     <Spacer/>
-                                    Inter
+                                    Interest Rate(Monthly)
                                     <SizeBox w={100}/>
+                                    Status
                                 </ListIteOption>
                                 <ListItemContainer>
                                     CityDAO<Spacer/>2,000<Spacer/>2023.12.01<Spacer/>15%<Spacer/>
