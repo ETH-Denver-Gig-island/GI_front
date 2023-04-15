@@ -21,7 +21,7 @@ const Container = styled.div`
     border: ${COLORS.black} solid 3px;
 `;
 
-function RoundBorderBtn({onClick, ...props}) {
+function RoundBorderBtn({size, color, onClick, ...props}) {
     return (
         <Container onClick={onClick}>
             {props.children}

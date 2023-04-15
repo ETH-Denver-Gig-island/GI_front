@@ -18,7 +18,7 @@ const Container = styled.div`
     justify-content: center;
     
     width: 100%;
-    max-width: calc(1920px * 0.65);
+    max-width: 1180px;
 
     animation: ${ContentLoaded} 1.0s;
 `;
@@ -27,7 +27,11 @@ function Lending() {
     const navigate = useNavigate();
 
     function moveSignUp() {
-        navigate('/signup');
+        // navigate('/signup');
+    }
+
+    async function connectWallet() {
+
     }
 
     return (

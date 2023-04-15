@@ -12,7 +12,7 @@ import SizeBox from "./components/utils/blocks/SizeBox";
 
 const GlobalStyle = createGlobalStyle`
     * {
-        font-family: Quicksand;
+        font-family: Roboto;
     }
 `;
 
@@ -39,9 +39,9 @@ function App() {
 
     return (
         <div className={'App'}>
-            Currently, this is demo mode. <br/>
+            {/* Currently, this is demo mode. <br/>
             Within a week, we plan to connect and make it available for testing on<br/>
-            the Goerli testnet and other various layers.
+            the Goerli testnet and other various layers. */}
             <ScrollToTop/>
             <GlobalStyle/>
             {/*<Header/>*/}
